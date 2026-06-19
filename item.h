@@ -36,6 +36,6 @@ public:
 
     friend ostream& operator<<(ostream& out, const Item& item);
 
-}
+};
 
 #endif //__ITEM_H__
