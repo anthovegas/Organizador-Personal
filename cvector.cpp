@@ -37,7 +37,7 @@ CVector<T>::~CVector() {
 }
 
 template <typename T>
-CVector<T>::grow() {
+void CVector<T>::grow() {
     T newCapacity = (capacity_ == 0) ? 1 : capacity_ * 2;
     T* newData = new T[newCapacity];
 
