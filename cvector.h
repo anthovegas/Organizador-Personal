@@ -7,7 +7,7 @@ using I = int;
 using B = bool;
 
 template <typename T>
-class Cvector {
+class CVector {
 private:
     T* data;
     I size_;
