@@ -1,0 +1,11 @@
+#ifndef __CONSOLE_PRINTER_H__
+#define __CONSOLE_PRINTER_H__
+
+#include "printer.h"
+
+class ConsolePrinter : public Printer {
+public:
+    void print(const string& text) override;
+};
+
+#endif // __CONSOLE_PRINTER_H__
