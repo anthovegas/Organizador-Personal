@@ -8,6 +8,10 @@ using namespace std;
 using ID = int;
 using Priority = int;
 
+using I = int;
+using B = bool;
+using S = string;
+
 enum class ItemType { TASK, HABIT, NOTE, GOAL };
 
 class Item {
