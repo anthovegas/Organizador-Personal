@@ -9,6 +9,7 @@ private:
     string buffer;
 
 public:
+    using Printer::print;
     void print(const string& text) override;
     string getContent() const;
     void clearConcent();

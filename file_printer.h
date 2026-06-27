@@ -10,6 +10,7 @@ private:
     ofstream file;
 
 public:
+    using Printer::print;
     explicit FilePrinter(const string& filename); //////////
     ~FilePrinter() override;
 
