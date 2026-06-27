@@ -14,6 +14,7 @@ struct Date {
 
     S toString() const;
     B isBefore(const Date& other) const;
+    I toDayNumber() const;
 };
 
 #endif // __DATE_H__
