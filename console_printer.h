@@ -5,6 +5,7 @@
 
 class ConsolePrinter : public Printer {
 public:
+    using Printer::print;
     void print(const string& text) override;
 };
 
