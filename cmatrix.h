@@ -3,7 +3,7 @@
 
 using I = int;
 
-//#include <stdexcept> ///////////////
+#include <stdexcept> ///////////////
 
 template <typename T>
 class CMatrix {

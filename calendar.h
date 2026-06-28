@@ -26,7 +26,7 @@ private:
 public:
     Calendar();
 
-    B scheludeItem(Day day, I slot, Item* item);
+    B scheduleItem(Day day, I slot, Item* item);
     B removeItem(Day day, I slot);
     Item* getItem(Day day, I slot) const;
     B isFree(Day day, I slot) const;
