@@ -24,7 +24,7 @@ string Calendar::slotLabel(I slot) const {
     return to_string(hour) + ":00";
 }
 
-B Calendar::scheludeItem(Day day, I slot, Item* item) {
+B Calendar::scheduleItem(Day day, I slot, Item* item) {
     I row = dayToIndex(day);
     if (grid.at(row, slot) != nullptr) {
         return false;

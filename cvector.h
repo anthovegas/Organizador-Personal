@@ -1,7 +1,7 @@
 #ifndef __CVECTOR_H__
 #define __CVECTOR_H__
 
-//#include <stdexcept> ///////////////
+#include <stdexcept> ///////////////
 
 using I = int;
 using B = bool;
