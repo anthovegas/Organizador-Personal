@@ -1,6 +1,6 @@
 #include "goal.h"
 
-Goal::Goal(const S& title, I targetValue, const S& unit,
+Goal::Goal(const ST& title, I targetValue, const ST& unit,
          Date deadline, Priority priority)
     : Item(title, priority), targetValue(targetValue), currentValue(0),
         unit(unit), deadline(deadline) {}
@@ -25,8 +25,8 @@ ItemType Goal::getType() const { return ItemType::GOAL; }
 
 B Goal::isComplete() const { return currentValue >= targetValue; }
 
-S Goal::toString() const {
-    S status = isComplete() ? "[CUMPLIDA]" : "[EN PROGRESO]";
+ST Goal::toString() const {
+    ST status = isComplete() ? "[CUMPLIDA]" : "[EN PROGRESO]";
     return status + " " + title + ": " + to_string(currentValue) + "/" +
             to_string(targetValue) + " " + unit + 
             " (plazo: " + deadline.toString() + ")\n";

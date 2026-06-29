@@ -3,14 +3,14 @@ using namespace std;
 
 ID Item::nextId = 1;
 
-Item::Item(const string& title, Priority priority)
+Item::Item(const ST& title, Priority priority)
     : id(nextId++), title(title), priority(priority) {}
 
 ID Item::getId() const { return id; }
 
-string Item::getTitle() const { return title; }
+ST Item::getTitle() const { return title; }
 
-void Item::setTitle(const string& newTitle) { title = newTitle; }
+void Item::setTitle(const ST& newTitle) { title = newTitle; }
 
 Priority Item::getPriority() const { return priority; }
 

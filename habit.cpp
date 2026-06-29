@@ -1,6 +1,6 @@
 #include "habit.h"
 
-Habit::Habit(const S& title, Priority priority)
+Habit::Habit(const ST& title, Priority priority)
     : Item (title, priority), currentStreak(0), bestStreak(0),
       lastCompleted({0, 0, 0}), doneToday(false) {}
 
@@ -36,9 +36,9 @@ ItemType Habit::getType() const { return ItemType::HABIT; }
 
 B Habit::isComplete() const { return doneToday; }
 
-S Habit::toString() const {
-    S status = doneToday ? "[HECHO HOY]" : "[PENDIENTE HOY]";
+ST Habit::toString() const {
+    ST status = doneToday ? "[HECHO HOY]" : "[PENDIENTE HOY]";
     return status + " " + title +
            " - racha actual: " + to_string(currentStreak) + " dias" +
-           " (mejor racha: " +
+           " (mejor racha: " + to_string(bestStreak) + ")\n";
 }

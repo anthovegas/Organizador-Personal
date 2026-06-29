@@ -1,13 +1,13 @@
 #include "note.h"
 
-Note::Note(const string& title, const string& content, Priority priority)
+Note::Note(const ST& title, const ST& content, Priority priority)
     : Item(title, priority), content(content) {}
 
-std::string Note::getContent() const { return content; }
+ST Note::getContent() const { return content; }
 
-void Note::setContent(const string& newContent) { content = newContent; }
+void Note::setContent(const ST& newContent) { content = newContent; }
 
-void Note::appendContent(const string& extra) {
+void Note::appendContent(const ST& extra) {
     content += "\n" + extra;
 }
 
@@ -17,6 +17,6 @@ B Note::isComplete() const {
     return true;
 }
 
-string Note::toString() const {
+ST Note::toString() const {
     return "[NOTA]" + title + "\n " + content + "\n";
 }

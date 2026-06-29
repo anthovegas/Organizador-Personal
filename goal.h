@@ -9,11 +9,11 @@ class Goal : public Item {
 private:
     I targetValue;
     I currentValue;
-    S  unit;
+    ST  unit;
     Date deadline;
 
 public:
-    Goal(const S& title, I targetValue, const S& unit,
+    Goal(const ST& title, I targetValue, const ST& unit,
          Date deadline, Priority priority = 2);
 
     void addProgress(I amount);
@@ -25,7 +25,7 @@ public:
 
     ItemType getType() const override;
     B isComplete() const override;
-    S toString() const override;
+    ST toString() const override;
 };
 
 #endif // __GOAL_H__

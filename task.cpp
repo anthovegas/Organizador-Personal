@@ -1,7 +1,7 @@
 #include "task.h"
 using namespace std;
 
-Task::Task(const string& title, Priority priority)
+Task::Task(const ST& title, Priority priority)
     : Item (title, priority), completed(false) {}
 
 Task::~Task() {
@@ -42,14 +42,14 @@ I Task::countSubtasks() const {
     return total;
 }
 
-string Task::toString() const {
+ST Task::toString() const {
     return toStringHelper(0);
 }
 
-string Task::toStringHelper(I level) const {
-    string indent(level * 2, ' ');
-    string check = completed ? "[x]" : "[ ]";
-    string result = indent + check + " " + title +
+ST Task::toStringHelper(I level) const {
+    ST indent(level * 2, ' ');
+    ST check = completed ? "[x]" : "[ ]";
+    ST result = indent + check + " " + title +
                      "(prioridad " + to_string(priority) + ")\n";
     for (auto i = 0; i < subtasks.size(); i++) {
         result += subtasks[i]->toStringHelper(level + 1);

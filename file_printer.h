@@ -11,10 +11,10 @@ private:
 
 public:
     using Printer::print;
-    explicit FilePrinter(const string& filename); //////////
+    explicit FilePrinter(const ST& filename); //////////
     ~FilePrinter() override;
 
-    void print(const string& text) override;
+    void print(const ST& text) override;
 };
 
 #endif //__FILE_PRINTER_H__

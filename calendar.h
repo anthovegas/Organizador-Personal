@@ -11,6 +11,7 @@ using Slot = int;
 
 using I = int;
 using B = bool;
+using ST = string;
 
 const I DAYS_IN_WEEK = 7;
 const I SLOTS_PER_DAY = 12;
@@ -20,8 +21,8 @@ private:
     CMatrix<Item*> grid;
 
     I dayToIndex(Day day) const;
-    string dayName(Day day) const;
-    string slotLabel(I slot) const;
+    ST dayName(Day day) const;
+    ST slotLabel(I slot) const;
 
 public:
     Calendar();
@@ -32,7 +33,7 @@ public:
     B isFree(Day day, I slot) const;
 
     I countItemsInDay(Day day) const;
-    string toString() const;
+    ST toString() const;
 };
 
 #endif // __CALENDAR_H__

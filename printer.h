@@ -8,10 +8,10 @@ class Printer {
 public:
     virtual ~Printer() = default;
 
-    virtual void print(const string& text) = 0;
+    virtual void print(const ST& text) = 0;
 
     void print(const Item& item);
-    void printLine(const string& text);
+    void printLine(const ST& text);
 };
 
 #endif // __PRINTER_H__

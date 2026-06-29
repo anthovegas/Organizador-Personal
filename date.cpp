@@ -6,9 +6,9 @@ namespace {
     }
 }
 
-S Date::toString() const {
-    S d = (day < 10 ? "0" : "") + to_string(day);
-    S m = (month < 10 ? "0" : "") + to_string(month);
+ST Date::toString() const {
+    ST d = (day < 10 ? "0" : "") + to_string(day);
+    ST m = (month < 10 ? "0" : "") + to_string(month);
     return d + "/" + m + "/" + to_string(year);
 }
 
