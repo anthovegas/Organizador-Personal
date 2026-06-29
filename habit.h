@@ -12,7 +12,7 @@ private:
     B doneToday;
 
 public:
-    Habit(const S& title, Priority priority = 2);
+    Habit(const ST& title, Priority priority = 2);
 
     void markDoneToday(const Date& today);
     void resetDay();
@@ -23,7 +23,7 @@ public:
 
     ItemType getType() const override;
     B isComplete() const override;
-    S toString() const override;
+    ST toString() const override;
 };
 
 #endif // __HABIT_H__

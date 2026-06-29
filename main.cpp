@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 #include "item.h"
 #include "task.h"
 #include "note.h"
@@ -13,28 +14,65 @@
 #include "cvector.h"
 #include "sort.h"
 
+using namespace std;
 using ItemList = CVector<Item*>; 
 
 void freeAll(ItemList& items) {
-    for (int i = 0; i < items.size(); i++) {
+    for (auto i = 0; i < items.size(); i++) {
         delete items[i];
     }
 }
 
 int main() {
     Date today = {27, 6, 2026};
+    ConsolePrinter console;
 
-    Task* proyecto = new Task("Proyecto LifeOS", 1);
-    proyecto->addSubtask(new Task("Disenar las clases", 2));
-    proyecto->addSubtask(new Task("Implementar sorting", 2));
-    proyecto->markComplete(); 
+    ST taskTitle, subtask1, subtask2;
+    console.printLine("=== Ingresa tu Tarea ===");
+    cout << "Titulo de la tarea: ";
+    getline(cin, taskTitle);
+    cout << "Subtarea 1: ";
+    getline(cin, subtask1);
+    cout << "Subtarea 2: ";
+    getline(cin, subtask2);
 
-    Note* idea = new Note("Idea", "Agregar modo oscuro al imprimir en consola");
+    Task* proyecto = new Task(taskTitle, 1);
+    proyecto->addSubtask(new Task(subtask1, 2));
+    proyecto->addSubtask(new Task(subtask2, 2));
+    proyecto->markComplete();
+    
+    ST noteTitle, noteContent;
+    console.printLine("\n=== Ingresa tu Nota ===");
+    cout << "Titulo de la nota: ";
+    getline(cin, noteTitle);
+    cout << "Contenido: ";
+    getline(cin, noteContent);
 
-    Goal* meta = new Goal("Leer 12 libros", 12, "libros", {31, 12, 2026}, 2);
-    meta->addProgress(5);
+    Note* idea = new Note(noteTitle, noteContent);
 
-    Habit* leer = new Habit("Leer 20 minutos", 2);
+    ST goalTitle, goalUnit;
+    I goalTarget, goalProgress;
+    console.printLine("\n=== Ingresa tu Meta ===");
+    cout << "Titulo de la meta: ";
+    getline(cin, goalTitle);
+    cout << "Unidad (ej: libros, km, paginas): ";
+    getline(cin, goalUnit);
+    cout << "Cantidad objetivo: ";
+    cin >> goalTarget;
+    cout << "Progreso actual: ";
+    cin >> goalProgress;
+    cin.ignore();
+
+
+    Goal* meta = new Goal(goalTitle, goalTarget, goalUnit, {31, 12, 2026}, 2);
+    meta->addProgress(goalProgress);
+
+    ST habitTitle;
+    console.printLine("\n=== Ingresa tu Habito diario ===");
+    cout << "Titulo del habito: ";
+    getline(cin, habitTitle);
+
+    Habit* leer = new Habit(habitTitle, 2);
     leer->markDoneToday(today);
 
     ItemList items;
@@ -43,37 +81,49 @@ int main() {
     items.push_back(meta);
     items.push_back(leer);
 
-    ConsolePrinter console;
-
-    console.printLine("=== Todos los items (polimorfismo) ===");
-    for (int i = 0; i < items.size(); i++) {
+    console.printLine("\t");
+    console.printLine("ORGANIZADOR PERSONAL");
+    console.printLine("=== Todos los items ===");
+    for (auto i = 0; i < items.size(); i++) {
         console.print(*items[i]);
     }
 
     console.printLine("");
     console.printLine("Proyecto completo (incluyendo subtareas)? " +
-                       std::string(proyecto->isComplete() ? "si" : "no"));
+                       ST(proyecto->isComplete() ? "si" : "no"));
     console.printLine("Total de subtareas anidadas: " +
-                       std::to_string(proyecto->countSubtasks()));
+                       to_string(proyecto->countSubtasks()));
+
+    I diaTask, horaTask, diaHabit, horaHabit;
+    console.printLine("\n=== Agenda semanal ===");
+    cout << "Dia para tu tarea (0=Lunes, 1=Martes, 2=Miercoles, 3=Jueves, 4=Viernes, 5=Sabado, 6=Domingo): ";
+    cin >> diaTask;
+    cout << "Hora para tu tarea (0=8:00, 1=9:00, 2=10:00 ... 11=19:00): ";
+    cin >> horaTask;
+    cout << "Dia para tu habito (0=Lunes ... 6=Domingo): ";
+    cin >> diaHabit;
+    cout << "Hora para tu habito (0=8:00 ... 11=19:00): ";
+    cin >> horaHabit;
+    cin.ignore();
 
     Calendar agenda;
-    agenda.scheduleItem(Day::MONDAY, 0, proyecto);
-    agenda.scheduleItem(Day::WEDNESDAY, 3, leer);
+    agenda.scheduleItem(static_cast<Day>(diaTask), horaTask, proyecto);
+    agenda.scheduleItem(static_cast<Day>(diaHabit), horaHabit, leer);
 
     console.printLine("");
     console.printLine("=== Agenda semanal ===");
     console.print(agenda.toString());
 
     MemoryPrinter buffer;
-    for (int i = 0; i < items.size(); i++) {
+    for (auto i = 0; i < items.size(); i++) {
         buffer.print(*items[i]);
     }
     console.printLine("");
     console.printLine("=== Capturado en memoria (MemoryPrinter) ===");
-    console.print(buffer.getContent());
+    //console.print(buffer.getContent());
 
     FilePrinter archivo("lifeos_log.txt");
-    for (int i = 0; i < items.size(); i++) {
+    for (auto i = 0; i < items.size(); i++) {
         archivo.print(*items[i]);
     }
     console.printLine("");
@@ -89,19 +139,19 @@ int main() {
     MergeSort(&porMerge[0], 0, porMerge.size() - 1, MenorPrioridad);
 
     console.printLine("");
-    console.printLine("=== Orden por prioridad (deberia ser igual en los 3) ===");
-    console.printLine("Burbuja:");
-    for (int i = 0; i < porBurbuja.size(); i++) {
-        console.printLine("  " + porBurbuja[i]->getTitle());
-    }
-    console.printLine("Quick:");
-    for (int i = 0; i < porQuick.size(); i++) {
+    console.printLine("=== Orden por prioridad ===");
+    //console.printLine("Burbuja:");
+    //for (auto i = 0; i < porBurbuja.size(); i++) {
+    //    console.printLine("  " + porBurbuja[i]->getTitle());
+    //}
+    console.printLine("QuickSort:");
+    for (auto i = 0; i < porQuick.size(); i++) {
         console.printLine("  " + porQuick[i]->getTitle());
     }
-    console.printLine("Merge:");
-    for (int i = 0; i < porMerge.size(); i++) {
-        console.printLine("  " + porMerge[i]->getTitle());
-    }
+    //console.printLine("Merge:");
+    //for (auto i = 0; i < porMerge.size(); i++) {
+    //    console.printLine("  " + porMerge[i]->getTitle());
+    //}
 
     freeAll(items);
 

@@ -15,7 +15,7 @@ private:
     SubtaskList subtasks;
 
 public:
-    Task(const string& title, Priority priority = 2);
+    Task(const ST& title, Priority priority = 2);
     ~Task() override;
 
     void markComplete();
@@ -24,12 +24,12 @@ public:
 
     ItemType getType() const override;
     B isComplete() const override;
-    string toString() const override;
+    ST toString() const override;
 
     I countSubtasks() const;
 
 private:
-    string toStringHelper(I level) const;
+    ST toStringHelper(I level) const;
 };
 
 #endif //__TASK_H__

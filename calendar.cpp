@@ -6,7 +6,7 @@ I Calendar::dayToIndex(Day day) const {
     return static_cast<int>(day); /////////////
 }
 
-string Calendar::dayName(Day day) const {
+ST Calendar::dayName(Day day) const {
     switch (day) {
         case Day::MONDAY: return "Lunes";
         case Day::TUESDAY: return "Martes";
@@ -19,7 +19,7 @@ string Calendar::dayName(Day day) const {
     return "?";
 }
 
-string Calendar::slotLabel(I slot) const {
+ST Calendar::slotLabel(I slot) const {
     I hour = 8 + slot;
     return to_string(hour) + ":00";
 }
@@ -57,8 +57,8 @@ I Calendar::countItemsInDay(Day day) const {
     return count;
 }
 
-string Calendar::toString() const {
-    string result = "";
+ST Calendar::toString() const {
+    ST result = "";
     for (auto row = 0; row < grid.rows(); row++) {
         result += dayName(static_cast<Day>(row)) + ":\n"; ///////////
         for (auto col = 0; col < grid.cols(); col++) {

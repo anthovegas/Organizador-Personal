@@ -2,17 +2,18 @@
 #define __DATE_H__
 
 #include <string>
+using namespace std;
+
 using I = int;
 using B = bool;
-using S = string;
-using namespace std;
+using ST = string;
 
 struct Date {
     I day;
     I month;
     I year;
 
-    S toString() const;
+    ST toString() const;
     B isBefore(const Date& other) const;
     I toDayNumber() const;
 };

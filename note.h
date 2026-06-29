@@ -5,18 +5,18 @@
 
 class Note : public Item {
 private:
-    string content;
+    ST content;
 
 public:
-    Note(const string& title, const string& content = "", Priority priority = 3);
+    Note(const ST& title, const ST& content = "", Priority priority = 3);
 
-    string getContent() const;
-    void setContent(const string& newContent);
-    void appendContent(const string& extra);
+    ST getContent() const;
+    void setContent(const ST& newContent);
+    void appendContent(const ST& extra);
 
     ItemType getType() const override;
     B isComplete() const override;
-    string toString() const override;
+    ST toString() const override;
 };
 
 #endif // __NOTE_H__

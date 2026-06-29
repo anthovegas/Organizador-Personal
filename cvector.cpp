@@ -72,7 +72,7 @@ template <typename T>
 T& CVector<T>::operator[](I index) { return data[index]; }
 
 template <typename T>
-const T& CVector<T>::operator[](int index) const { return data[index]; }
+const T& CVector<T>::operator[](I index) const { return data[index]; }
 
 template <typename T>
 T& CVector<T>::at(I index) {

@@ -14,7 +14,7 @@ SOURCES = main.cpp \
           date.cpp \
           habit.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
-TARGET = lifeos
+TARGET = OrganizadorPersonal---
 
 all: $(TARGET)
 

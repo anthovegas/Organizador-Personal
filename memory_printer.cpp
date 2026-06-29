@@ -1,10 +1,10 @@
 #include "memory_printer.h"
 
-void MemoryPrinter::print(const string& text) {
+void MemoryPrinter::print(const ST& text) {
     buffer += text;
 }
 
-string MemoryPrinter::getContent() const {
+ST MemoryPrinter::getContent() const {
     return buffer;
 }
 

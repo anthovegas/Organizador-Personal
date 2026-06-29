@@ -6,12 +6,12 @@
 
 class MemoryPrinter : public Printer {
 private:
-    string buffer;
+    ST buffer;
 
 public:
     using Printer::print;
-    void print(const string& text) override;
-    string getContent() const;
+    void print(const ST& text) override;
+    ST getContent() const;
     void clearConcent();
 };
 
